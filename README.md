@@ -20,3 +20,6 @@ python -m pip airflow standalone
 
 [Caddy config](./Caddyfile) for fcm.
 
+Tutorials
+- [analyticsvidhya](https://www.analyticsvidhya.com/blog/2020/11/getting-started-with-apache-airflow/)
+  - `./tut_av/`
