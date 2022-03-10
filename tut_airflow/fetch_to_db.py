@@ -17,13 +17,15 @@ TEMP_COLLECTION = 'employees_temp'
 
 
 @dag(
-    dag_id='fetch_to_db',
+    default_args={
+        'owner': 'cspraul',
+    },
     schedule_interval='0 0 * * *',
     start_date=pendulum.datetime(2022, 1, 1, tz="UTC"),
     catchup=False,
     dagrun_timeout=datetime.timedelta(minutes=60),
 )
-def etl():
+def fetch_to_db():
     @task
     def get_data():
         data_path = '/tmp/employees.csv'
@@ -73,4 +75,4 @@ def etl():
     get_data() >> merge_data() >> clear_temp()
 
 
-dag = etl()
+dag = fetch_to_db()
