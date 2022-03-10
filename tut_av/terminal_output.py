@@ -10,7 +10,7 @@ from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
 
 dag = DAG(
-    dag_id="netstat-plant",
+    dag_id="netstat_plant",
     default_args={
         'owner': 'csprl',
         'depends_on_past': False,
@@ -19,21 +19,23 @@ dag = DAG(
         'email_on_retry': False,
         'retries': 1,
         'retry_delay': timedelta(minutes=5),
+        'start_date': days_ago(2),
     },
     description='simple bash command `netstat -plant`',
-    schedule_interval=timedelta(days=1)
+    schedule_interval=timedelta(days=1),
+    start_date=days_ago(2),
 )
 
 t1 = BashOperator(
     task_id='print_label',
     bash_command='echo CURRENT OPEN PORTS',
-    dag=dag
+    dag=dag,
 )
 
 t2 = BashOperator(
     task_id='netstat',
     bash_command='netstat -plant',
-    dag=dag
+    dag=dag,
 )
 
 t1 >> t2
