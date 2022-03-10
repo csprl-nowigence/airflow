@@ -32,3 +32,5 @@ Tutorials
 - [variables / python operator](https://www.analyticsvidhya.com/blog/2020/11/data-engineering-101-getting-started-with-python-operator-in-apache-airflow/)
   - [`./tut_av/python_op.py`](./tut_av/python_op.py)
   - [`./tut_av/variables.py`](./tut_av/variables.py)
+- [basic pipeline](https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html)
+  - [`./tut_airflow/basic_pipeline.py`](./tut_airflow/basic_pipeline.py)
