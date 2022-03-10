@@ -18,8 +18,14 @@ pip install apache-airflow-providers-mongo
 python -m pip airflow standalone
 ```
 
+I had to upgrade the cryptography package for this to work on my M1 Mac.  
+Ended up with version 36.0.1
+```shell
+pip install -U cryptograhy
+```
+
 [Caddy config](./Caddyfile) for fcm.
 
 Tutorials
-- [analyticsvidhya](https://www.analyticsvidhya.com/blog/2020/11/getting-started-with-apache-airflow/)
-  - `./tut_av/`
+- [analyticsvidhya](https://www.analyticsvidhya.com/blog/2020/11/getting-started-with-apache-airflow/) (old, super basic, kinda lousy, I didn't follow it exactly)
+  - [`./tut_av/terminal_output.py`](./tut_av/terminal_output.py)
