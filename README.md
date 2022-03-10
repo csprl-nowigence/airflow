@@ -34,3 +34,4 @@ Tutorials
   - [`./tut_av/variables.py`](./tut_av/variables.py)
 - [basic pipeline](https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html)
   - [`./tut_airflow/basic_pipeline.py`](./tut_airflow/basic_pipeline.py)
+  - [`./tut_airflow/fetch_to_db.py`](./tut_airflow/fetch_to_db.py)
