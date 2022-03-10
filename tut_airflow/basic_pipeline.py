@@ -9,7 +9,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 
 with DAG(
-    dag_id='baisc_pipeline',
+    dag_id='basic_pipeline',
     default_args={
         'depends_on_past': False,
         'email': ['airflow@example.com'],
