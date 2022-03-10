@@ -2,6 +2,7 @@
 Fetch data and store in DB tutorial from Airflow itself: https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html
 """
 
+import csv
 import datetime
 
 import pendulum
