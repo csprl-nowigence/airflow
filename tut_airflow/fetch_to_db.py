@@ -11,6 +11,9 @@ from airflow.decorators import dag, task
 from airflow.providers.mongo.hooks.mongo import MongoHook
 
 MONGO_CONNECTION_ID = 'mongo_nowi_test'
+DB = 'airflow'
+EMPLOYEES_COLLECTION = 'employees'
+TEMP_COLLECTION = 'employees_temp'
 
 
 @dag(
@@ -41,7 +44,7 @@ def etl():
 
         mongo_hook = MongoHook(conn_id=MONGO_CONNECTION_ID)
         client = mongo_hook.get_conn()
-        client['airflow']['employees_temp'].insert_many(rows, ordered=False)
+        client[DB][TEMP_COLLECTION].insert_many(rows, ordered=False)
         client.close()
 
     @task
@@ -49,9 +52,9 @@ def etl():
         try:
             mongo_hook = MongoHook(conn_id=MONGO_CONNECTION_ID)
             client = mongo_hook.get_conn()
-            incoming_serial_numbers = client['airflow']['employees_temp'].distinct('Serial Number')
-            client['airflow']['employees'].delete_many({"Serial Number": {"$in": incoming_serial_numbers}})
-            client['airflow']['employees'].insert_many(client['airflow']['employees_temp'].find({}))
+            incoming_serial_numbers = client[DB][TEMP_COLLECTION].distinct('Serial Number')
+            client[DB][EMPLOYEES_COLLECTION].delete_many({"Serial Number": {"$in": incoming_serial_numbers}})
+            client[DB][EMPLOYEES_COLLECTION].insert_many(client['airflow'][TEMP_COLLECTION].find({}))
             client.close()
             return 0
         except Exception as e:
@@ -62,7 +65,7 @@ def etl():
         try:
             mongo_hook = MongoHook(conn_id=MONGO_CONNECTION_ID)
             client = mongo_hook.get_conn()
-            client['airflow']['employees_temp'].delete_many({})
+            client['airflow'].drop_collection(TEMP_COLLECTION)
             return 0
         except Exception as e:
             return 1
