@@ -11,7 +11,7 @@ from airflow.operators.bash import BashOperator
 with DAG(
     dag_id='basic_pipeline',
     default_args={
-        'owner': 'cspraul',
+        'owner': 'csprl',
         'depends_on_past': False,
         'email': ['airflow@example.com'],
         'email_on_failure': False,

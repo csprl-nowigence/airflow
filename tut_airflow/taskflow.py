@@ -10,7 +10,7 @@ from airflow.decorators import dag, task
 
 @dag(
     default_args={
-        'owner': 'cspraul',
+        'owner': 'csprl',
     },
     schedule_interval=None,
     start_date=pendulum.datetime(2022, 1, 1, tz='UTC'),
