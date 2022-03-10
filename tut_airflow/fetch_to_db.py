@@ -1,5 +1,5 @@
 """
-Fetch data and store in DB tutorial from Airflow itself: https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html
+Fetch data and store in DB tutorial from Airflow: https://airflow.apache.org/docs/apache-airflow/stable/tutorial.html
 """
 
 import csv
@@ -9,6 +9,8 @@ import pendulum
 import requests
 from airflow.decorators import dag, task
 from airflow.providers.mongo.hooks.mongo import MongoHook
+
+MONGO_CONNECTION_ID = 'mongo_nowi_test'
 
 
 @dag(
@@ -33,7 +35,11 @@ def etl():
             reader = csv.DictReader(in_file)
             rows = [row for row in reader]
 
-        mongo_hook = MongoHook(conn_id='mongo_nowi_test')
+        for row in rows:
+            row['Serial Number'] = int(row['Serial Number'])
+            row['Leave'] = int(row['Leave'])
+
+        mongo_hook = MongoHook(conn_id=MONGO_CONNECTION_ID)
         client = mongo_hook.get_conn()
         client['airflow']['employees_temp'].insert_many(rows, ordered=False)
         client.close()
@@ -41,17 +47,27 @@ def etl():
     @task
     def merge_data():
         try:
-            mongo_hook = MongoHook(conn_id='mongo_nowi_test')
+            mongo_hook = MongoHook(conn_id=MONGO_CONNECTION_ID)
             client = mongo_hook.get_conn()
             incoming_serial_numbers = client['airflow']['employees_temp'].distinct('Serial Number')
             client['airflow']['employees'].delete_many({"Serial Number": {"$in": incoming_serial_numbers}})
             client['airflow']['employees'].insert_many(client['airflow']['employees_temp'].find({}))
             client.close()
             return 0
-        except Exception as exc:
+        except Exception as e:
             return 1
 
-    get_data() >> merge_data()
+    @task
+    def clear_temp():
+        try:
+            mongo_hook = MongoHook(conn_id=MONGO_CONNECTION_ID)
+            client = mongo_hook.get_conn()
+            client['airflow']['employees_temp'].delete_many({})
+            return 0
+        except Exception as e:
+            return 1
+
+    get_data() >> merge_data() >> clear_temp()
 
 
 dag = etl()
