@@ -11,6 +11,7 @@ from airflow.providers.mongo.hooks.mongo import MongoHook
 
 
 @dag(
+    dag_id='fetch_to_db',
     schedule_interval='0 0 * * *',
     start_date=pendulum.datetime(2022, 1, 1, tz="UTC"),
     catchup=False,
