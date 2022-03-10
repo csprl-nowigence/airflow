@@ -1,7 +1,7 @@
 # airflow
 Learning Airflow
 
-Doing [basic local installation](https://airflow.apache.org/docs/apache-airflow/stable/start/local.html)
+Following [basic local installation](https://airflow.apache.org/docs/apache-airflow/stable/start/local.html) instructions.
 
 ```shell
 # Install Airflow using the constraints file
@@ -15,6 +15,7 @@ CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${A
 ```shell
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 pip install apache-airflow-providers-mongo
+# launch airflow
 python -m pip airflow standalone
 ```
 
@@ -24,7 +25,21 @@ Ended up with version 36.0.1
 pip install -U cryptograhy
 ```
 
+Adding MongoDB Atlas connection in admin UI:
+- host: \<server domain name>
+- schema: `admin`  (whatever the path in your connection uri is)
+- login: \<user name>
+- password: \<password>
+- port: **LEAVE THIS EMPTY**  (leave blank for atlas clusters)
+- extra: `{"srv": true}`  (for atlas clusters, sets URI scheme to `mongo+srv:`)
+
 [Caddy config](./Caddyfile) for fcm.
+
+This is running on fcm:
+- this repo folder: `/root/airflow_exploration/`
+- airflow folder: `/root/airflow/`
+- pyenv virtualenv: `airflow`
+- tmux session: `airflow`
 
 Tutorials
 - [basic dag](https://www.analyticsvidhya.com/blog/2020/11/getting-started-with-apache-airflow/) (old, super basic, kinda lousy, I didn't follow it exactly)
