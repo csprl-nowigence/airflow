@@ -31,4 +31,4 @@ Tutorials
   - [`./tut_av/terminal_output.py`](./tut_av/terminal_output.py)
 - [variables / python operator](https://www.analyticsvidhya.com/blog/2020/11/data-engineering-101-getting-started-with-python-operator-in-apache-airflow/)
   - [`./tut_av/python_op.py`](./tut_av/python_op.py)
-- 
+  - [`./tut_av/variables.py`](./tut_av/variables.py)
