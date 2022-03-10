@@ -27,5 +27,8 @@ pip install -U cryptograhy
 [Caddy config](./Caddyfile) for fcm.
 
 Tutorials
-- [analyticsvidhya](https://www.analyticsvidhya.com/blog/2020/11/getting-started-with-apache-airflow/) (old, super basic, kinda lousy, I didn't follow it exactly)
+- [basic dag](https://www.analyticsvidhya.com/blog/2020/11/getting-started-with-apache-airflow/) (old, super basic, kinda lousy, I didn't follow it exactly)
   - [`./tut_av/terminal_output.py`](./tut_av/terminal_output.py)
+- [variables / python operator](https://www.analyticsvidhya.com/blog/2020/11/data-engineering-101-getting-started-with-python-operator-in-apache-airflow/)
+  - [`./tut_av/python_op.py`](./tut_av/python_op.py)
+- 
