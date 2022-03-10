@@ -9,12 +9,13 @@ from airflow.decorators import dag, task
 
 
 @dag(
+    owner='cspraul',
     schedule_interval=None,
     start_date=pendulum.datetime(2022, 1, 1, tz='UTC'),
     catchup=False,
     tags=['example', 'tutorial', 'taskflow'],
 )
-def tutorial_taskflow_api_etl():
+def my_tutorial_taskflow_api_etl():
     """
     ### TaskFlow API Tutorial Documentation
     This is a simple ETL data pipeline example which demonstrates the use of
@@ -64,4 +65,4 @@ def tutorial_taskflow_api_etl():
     load(order_summary['total_order_value'])
 
 
-tutorial_etl_dag = tutorial_taskflow_api_etl()
+tutorial_etl_dag = my_tutorial_taskflow_api_etl()
