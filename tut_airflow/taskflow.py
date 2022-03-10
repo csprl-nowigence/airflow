@@ -65,4 +65,4 @@ def my_tutorial_taskflow_api_etl():
     load(order_summary['total_order_value'])
 
 
-tutorial_etl_dag = my_tutorial_taskflow_api_etl()
+my_tutorial_etl_dag = my_tutorial_taskflow_api_etl()
