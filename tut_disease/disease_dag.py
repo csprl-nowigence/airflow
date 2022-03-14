@@ -2,8 +2,6 @@
 India disease tracker example from: https://humansofdata.atlan.com/2018/06/apache-airflow-disease-outbreaks-india/
 """
 
-import datetime as dt
-
 import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -45,5 +43,5 @@ with DAG(
         dag=dag,
     )
 
-    task_scrape_web.set_downstream(task_scrape_pdf)
-    task_scrape_pdf.set_downstream(task_add_to_dataset)
+task_scrape_web.set_downstream(task_scrape_pdf)
+task_scrape_pdf.set_downstream(task_add_to_dataset)
