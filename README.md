@@ -54,7 +54,7 @@ Tutorials
   - [`./tut_airflow/taskflow.py`](./tut_airflow/taskflow.py)
 - [india disease tracker](https://humansofdata.atlan.com/2018/06/apache-airflow-disease-outbreaks-india/)
   - [`./tut_disease/disease_dag.py`](./tut_disease/disease_dag.py)
-  - [`./tut_disease/utils.py`](./tut_disease/utils.py)
+  - [`./tut_disease/disease_utils.py`](./tut_disease/disease_utils.py)
 
 Need to learn:
 > Merging your code into a code repository that has a master scheduler running against it should get it to get triggered and run every day.

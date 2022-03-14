@@ -8,7 +8,7 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from utils import scrape_web, scrape_pdf, add_to_dataset
+from disease_utils import scrape_web, scrape_pdf, add_to_dataset
 
 BASE_DIR = "/root/airflow_exploration/idt_pipeline"
 
@@ -18,7 +18,7 @@ with DAG(
     default_args={
         "owner": "csprl",
         "depends_on_past": False,
-        "start_date": pendulum.datetime(2022, 3, 14, tz="UTC"),
+        "start_date": pendulum.datetime(2022, 3, 1, tz="UTC"),
         "provide_context": True,
     },
     schedule_interval="0 0 * * 2",
