@@ -6,7 +6,14 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from disease_utils import scrape_web, scrape_pdf, add_to_dataset
+# from disease_utils import scrape_web, scrape_pdf, add_to_dataset
+
+def scrape_web():
+    pass
+def scrape_pdf():
+    pass
+def add_to_dataset():
+    pass
 
 BASE_DIR = "/root/airflow_exploration/idt_pipeline"
 
