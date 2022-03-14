@@ -1,3 +1,9 @@
+# packages for disease tracker tutorial
+cssselect
+pdfminer
+PyPDF2
+requests
+
 # Packages for this repo
 apache-airflow==2.2.4  # constraint = python 3.8
 apache-airflow-providers-mongo==2.3.0
