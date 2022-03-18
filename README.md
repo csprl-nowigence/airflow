@@ -16,7 +16,7 @@ CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${A
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 pip install apache-airflow-providers-mongo
 # launch airflow
-python -m pip airflow standalone
+python -m airflow standalone
 ```
 
 I had to upgrade the cryptography package for this to work on my M1 Mac.  
