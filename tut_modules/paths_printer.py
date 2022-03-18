@@ -3,9 +3,9 @@ Prints various paths for debugging and troubleshooting purposes.
 (why can't I import a module????????)
 """
 
-import pprint
 import os
 import sys
+from pprint import pprint
 
 import pendulum
 from airflow.decorators import dag, task
