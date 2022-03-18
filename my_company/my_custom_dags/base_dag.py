@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 
-def my_function():
+def my_base_function():
     print("my_company.my_custom_dags.base_dag.my_function")
 
 
@@ -27,7 +27,7 @@ with DAG(
 ) as dag:
     t1 = PythonOperator(
         task_id='base_dag1.t1',
-        python_callable=my_function,
+        python_callable=my_base_function,
         dag=dag
     )
 
