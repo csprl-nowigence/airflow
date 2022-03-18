@@ -3,9 +3,9 @@ import pendulum
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from my_company.common_package.common_module import cm_var
-from my_company.common_package.subpackage.subpackaged_util_module import spum_var
-from my_company.my_custom_dags.base_dag import my_base_function
+# from my_company.common_package.common_module import cm_var
+# from my_company.common_package.subpackage.subpackaged_util_module import spum_var
+# from my_company.my_custom_dags.base_dag import my_base_function
 
 
 def my_function():
