@@ -3,6 +3,7 @@ cssselect
 pdfminer
 PyPDF2
 requests
+lxml
 
 # Packages for this repo
 apache-airflow==2.2.4  # constraint = python 3.8

@@ -8,7 +8,7 @@ from airflow.operators.python import PythonOperator
 
 from disease_utils import scrape_web, scrape_pdf, add_to_dataset
 
-BASE_DIR = "/root/airflow_exploration/idt_pipeline"
+BASE_DIR = "/root/airflow_exploration/output"
 
 
 with DAG(
