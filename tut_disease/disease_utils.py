@@ -4,12 +4,12 @@ India disease tracker python functionality.
 
 
 def scrape_web():
-    pass
+    print("tut_disease.disease_utils.scrape_web")
 
 
 def scrape_pdf():
-    pass
+    print("tut_disease.disease_utils.scrape_web")
 
 
 def add_to_dataset():
-    pass
+    print("tut_disease.disease_utils.scrape_web")
