@@ -87,8 +87,8 @@ def scrape_web(**kwargs):
     """Scrape new PDFs from the IDSP website"""
     print('started web scraping task')
     base_dir = kwargs['base_dir']
-    execution_date = kwargs['execution_date'].strftime('%Y-%m-%dT%H:%M:%S')
-    execution_dir = os.path.join(base_dir, execution_date)
+    data_interval_start = kwargs['data_interval_start'].strftime('%Y-%m-%dT%H:%M:%S')
+    execution_dir = os.path.join(base_dir, data_interval_start)
     # create run directory
     mkdir(execution_dir)
 
@@ -131,13 +131,13 @@ def scrape_web(**kwargs):
                 writer.writerow([w, link])
 
 
-# scrape_pdf(base_dir="/Users/nowigence/PycharmProjects/airflow_exploration/output", execution_date=dt.datetime.now(tz=dt.timezone.utc))
+# scrape_pdf(base_dir="/Users/nowigence/PycharmProjects/airflow_exploration/output", data_interval_start=dt.datetime.now(tz=dt.timezone.utc))
 def scrape_pdf(**kwargs):
     """Scrape the downloaded PDFs"""
     print('started pdf scraping task')
     base_dir = kwargs['base_dir']
-    execution_date = kwargs['execution_date'].strftime('%Y-%m-%dT%H:%M:%S')
-    execution_dir = os.path.join(base_dir, execution_date)
+    data_interval_start = kwargs['data_interval_start'].strftime('%Y-%m-%dT%H:%M:%S')
+    execution_dir = os.path.join(base_dir, data_interval_start)
 
     # split all PDF pages into single page PDFs
     pdfs = glob.glob(os.path.join(execution_dir, '*.pdf'))
@@ -201,8 +201,8 @@ def scrape_pdf(**kwargs):
 def add_to_dataset(**kwargs):
     """Add scraped data to master dataset"""
     base_dir = kwargs['base_dir']
-    execution_date = kwargs['execution_date'].strftime('%Y-%m-%dT%H:%M:%S')
-    execution_dir = os.path.join(base_dir, execution_date)
+    data_interval_start = kwargs['data_interval_start'].strftime('%Y-%m-%dT%H:%M:%S')
+    execution_dir = os.path.join(base_dir, data_interval_start)
 
     # this can be done more nicely using pandas
     # and sorting the csvs based on week and page numbers
